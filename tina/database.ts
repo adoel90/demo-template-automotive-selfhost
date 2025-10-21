@@ -4,8 +4,8 @@ import { GitHubProvider } from "tinacms-gitprovider-github";
 import { MongodbLevel } from "mongodb-level"
 
 // Manage this flag in your CI/CD pipeline and make sure it is set to false in production
-// const isLocal = process.env.TINA_PUBLIC_IS_LOCAL === "true";
-const isLocal = true;
+const isLocal = process.env.TINA_PUBLIC_IS_LOCAL === "true";
+
 
 const token = process.env.GITHUB_PERSONAL_ACCESS_TOKEN as string;
 const owner = (process.env.GITHUB_OWNER ||
