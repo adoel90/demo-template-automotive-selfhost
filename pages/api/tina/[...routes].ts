@@ -18,7 +18,18 @@ const handler = TinaNodeBackend({
   databaseClient,
 });
 
-export default (req, res) => {
+export default async  (req, res) => {
   // Modify the request here if you need to
-  return handler(req, res);
+
+   console.log("🔍 [Tina API] Incoming request:", req.method, req.url);
+
+  try {
+    await handler(req, res);
+  } catch (error) {
+    console.error("❌ [Tina API] Error during request:", error.message);
+    console.error(error.stack);
+    res.status(500).json({ error: error.message });
+  }
+
+  // return handler(req, res);
 };
